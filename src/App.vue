@@ -1,28 +1,59 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+
+
+    <div class="container">
+      <hot-table 
+        :data="data" 
+        :colHeaders="colHeaders" 
+        :rowHeaders="rowHeaders" 
+        :stretchH='stretchH'
+        ></hot-table>
+    </div>
+
+
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import { HotTable } from "@handsontable/vue";
 
 export default {
-  name: 'app',
+  name: "app",
+  data() {
+    return {
+      data: [
+        ["", "Tesla", "Mercedes", "Toyota", "Volvo"],
+        ["2019", 10, 11, 12, 13],
+        ["2020", 20, 11, 14, 13],
+        ["2021", 30, 15, 12, 13]
+      ],
+      colHeaders: ['A', 'B', 'asd'],
+      rowHeaders:['asd','dsf','dgdg','asd'],
+      stretchH:'all'
+    };
+  },
   components: {
-    HelloWorld
+    HotTable
+  },
+  mounted() {
+    // console.log(this.$refs.HOTTABLE);
   }
-}
+};
 </script>
 
-<style>
+<style src="../node_modules/handsontable/dist/handsontable.full.css">
+</style>
+
+<style lang='less'>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  border: 2px solid pink;
+
+  .container {
+    border: 1px solid cyan;
+    width: 500px;
+    height: 500px;
+    overflow: hidden;
+  }
 }
 </style>
